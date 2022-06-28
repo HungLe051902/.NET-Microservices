@@ -63,6 +63,16 @@ namespace PlatformService.AsyncDataServices
             Console.WriteLine($"--> We have sent {message}");
         }
 
+        public void Dispose()
+        {
+            Console.WriteLine("MessageBus Disposed");
+            if (_channel.IsOpen)
+            {
+                _channel.Close();
+                _connection.Close();
+            }
+        }
+
         private void RabbitMQ_ConnectionShutdown(object sender, ShutdownEventArgs e)
         {
             Console.WriteLine("---> RabbitMQ Connection Shutdown");
