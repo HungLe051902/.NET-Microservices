@@ -48,12 +48,9 @@ namespace PlatformService
             }
 
             services.AddScoped<IPlatformRepo, PlatformRepo>();
-
             services.AddHttpClient<ICommandDataClient, HttpCommandDataClient>();
-
             services.AddSingleton<IMessageBusClient, MessageBusClient>();
             services.AddGrpc();
-
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
